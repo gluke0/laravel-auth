@@ -17,6 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+
+
+    // this is where you land after the login 
     public const HOME = '/dashboard';
 
     /**
