@@ -15,25 +15,29 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
+
+//localhost:8000/admin cause NOT inside the group with prefix 
 Route::get('/', function (){
-    return view('welcome');
+    return view('.guest.welcome');
 });
 
 // profile routes, middleware handles all these routes 
+// prefix to land in admin zone only after login
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    //localhost:8000/admin cause inside the group with prefix 
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 });
 
 
-//localhost:8888/admin/projects
-//localhost:8888/admin/projects{project} 
-//localhost:8888/admin/projects/create
+//localhost:8000/admin/projects
+//localhost:8000/admin/projects{project} 
+//localhost:8000/admin/projects/create
 
 
 require __DIR__.'/auth.php';
