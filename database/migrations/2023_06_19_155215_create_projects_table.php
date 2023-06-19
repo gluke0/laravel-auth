@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
+
             $table->id();
+            $table->string('title', '80')-unique();
+            $table->string('slug');
+            $table->text('description')->nullable();
+            $table->text('languages');
+            $table->text('image')->nullable(false);
             $table->timestamps();
+
         });
     }
 
