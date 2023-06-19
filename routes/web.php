@@ -20,7 +20,7 @@ Route::get('/', function (){
 });
 
 // profile routes, middleware handles all these routes 
-Route::middleware(['auth', 'verified'])->group(function (){
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
