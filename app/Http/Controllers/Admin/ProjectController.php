@@ -39,7 +39,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $form_data = $request->All();
+
+        $slug = Project::addSlug($request->title);
+
+        $form_data['slug'] = $slug;
+
+        $new_project = new Project();
+        $new_project->fill($form_data);
+        $new_project->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -59,9 +69,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
