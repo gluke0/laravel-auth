@@ -19,7 +19,7 @@
         @csrf
         @method('DELETE')
 
-        <button type="submit" class="btn btn-danger text-uppercase text-warning"> <strong> delete </strong> </button>
+        <button type="submit" class="btn btn-danger text-uppercase text-warning" onclick="return confirm('Are you sure you want to delete {{$project -> title }}')"> <strong> delete </strong> </button>
 
         </form>
     </div>

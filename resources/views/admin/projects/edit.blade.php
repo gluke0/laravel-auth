@@ -26,7 +26,7 @@
             <label for="input-languages" class="form-label text-white">Languages:</label>
             <input type="text" id="input-languages" class="form-control" name="languages" placeholder="languages" value="{{old('languages') ?? $project->languages}}"> 
         </div>
-        <button type="submit" class="btn btn-primary btn-outline-light my-4 col-2 mx-auto text-uppercase"><strong> modify </strong></button>
+        <button type="submit" class="btn btn-primary btn-outline-light my-4 col-2 mx-auto text-uppercase" onclick="return confirm('Are you sure you want to edit {{$project -> title }}')"><strong> modify </strong></button>
     </form>
 
 
