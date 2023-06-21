@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action=" {{ route('admin.projects.update', $project) }} " method="POST" class="row">
+    <form action=" {{ route('admin.projects.update', $project) }} " method="POST" class="row" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group mt-3">
             <label for="input-image" class="form-label text-white">Image:</label>
-            <input type="text" id="input-image" class="form-control" name="image" placeholder="image link" value="{{old('image') ?? $project->image}}"> 
+            <input type="file" id="input-image" class="form-control" name="image" placeholder="image link" value="{{old('image') ?? $project->image}}"> 
         </div>
         <div class="form-group mt-3 col-6">
             <label for="input-languages" class="form-label text-white">Languages:</label>
