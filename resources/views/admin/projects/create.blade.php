@@ -3,6 +3,16 @@
 @section('content')
     <h1 class="text-uppervase"> add a project to portfolio </h1>
 
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action=" {{ route('admin.projects.store') }} " method="POST" class="row">
 
         @csrf

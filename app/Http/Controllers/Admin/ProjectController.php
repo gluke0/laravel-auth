@@ -44,7 +44,7 @@ class ProjectController extends Controller
         
         $form_data = $request->validated();
 
-        // $form_data = $request->All();
+        $form_data = $request->All();
 
         $slug = Project::addSlug($request->title);
 

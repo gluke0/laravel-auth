@@ -25,9 +25,6 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'description' => ['nullable'],
-            'languages' => ['nullable'],
-            'image' => ['nullable'],
         ];
     }
 }
