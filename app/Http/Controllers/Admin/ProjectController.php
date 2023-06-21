@@ -26,9 +26,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
@@ -39,7 +39,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
