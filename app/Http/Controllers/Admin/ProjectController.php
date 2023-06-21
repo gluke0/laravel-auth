@@ -9,6 +9,8 @@ use App\Models\Admin\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     /**
@@ -49,6 +51,12 @@ class ProjectController extends Controller
         $slug = Project::addSlug($request->title);
 
         $form_data['slug'] = $slug;
+
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('project_images', $request->image);
+
+            $form_data['image'] = $path;
+        }
 
         $new_project = new Project();
         $new_project->fill($form_data);
@@ -96,6 +104,14 @@ class ProjectController extends Controller
         $slug = Project::addSlug($request->title);
 
         $form_data['slug'] = $slug;
+
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('project_images', $request->image);
+            if( $project->image ){
+                Storage::delete($project->image);
+            }
+            $form_data['image'] = $path;
+        }
 
         $project->update($form_data);
         
