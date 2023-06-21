@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action=" {{ route('admin.projects.store') }} " method="POST" class="row">
+    <form action=" {{ route('admin.projects.store') }} " method="POST" enctype="multipart/form-data" class="row">
 
         @csrf
 
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group mt-3">
             <label for="input-image" class="form-label text-white">Image:</label>
-            <input type="text" id="input-image" class="form-control" name="image" placeholder="image link"> 
+            <input type="file" id="input-image" class="form-control" name="image" placeholder="image link"> 
         </div>
         <div class="form-group mt-3 col-6">
             <label for="input-languages" class="form-label text-white">Languages:</label>
