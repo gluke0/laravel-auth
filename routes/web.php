@@ -33,7 +33,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     //localhost:8000/admin cause inside the group with prefix 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::resource('/projects', ProjectController::class);
+    Route::resource('/projects', ProjectController::class)->parameters(
+        [
+            'projects' => 'project:slug'
+        ]
+    );
 
 });
 
