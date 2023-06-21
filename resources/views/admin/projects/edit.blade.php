@@ -3,6 +3,16 @@
 @section('content')
     <h1 class="text-uppervase"> modify {{ $project->title }} </h1>
 
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action=" {{ route('admin.projects.update', $project) }} " method="POST" class="row">
 
         @csrf
