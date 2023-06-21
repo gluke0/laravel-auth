@@ -81,9 +81,18 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        
+        $form_data = $request->All();
+
+        $slug = Project::addSlug($request->title);
+
+        $form_data['slug'] = $slug;
+
+        $project->update($form_data);
+        
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -92,8 +101,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 }

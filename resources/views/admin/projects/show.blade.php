@@ -9,5 +9,19 @@
             <p class="card-text"><strong> Description: </strong> {{ $project -> description }} </p>
             <p class="card-text"><strong> Languages: </strong> {{ $project -> languages }} </p>
         </div>
+    </div>
+    <div class="mt-5">
+        <a href=" {{ route( 'admin.projects.edit', $project ) }} " class="btn btn-warning text-danger text-uppercase"><strong> edit</strong></a>
+    </div>
+    <div class="mt-2">
+        <form action="{{route('admin.projects.destroy', $project)}}" method="POST">
+
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="btn btn-danger text-uppercase text-warning"> <strong> delete </strong> </button>
+
+        </form>
+    </div>
 
 @endsection

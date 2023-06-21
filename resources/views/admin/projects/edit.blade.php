@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-uppervase"> modify a project </h1>
+    <h1 class="text-uppervase"> modify {{ $project->title }} </h1>
 
-    <form action=" {{ route('admin.projects.update') }} " method="POST" class="row">
+    <form action=" {{ route('admin.projects.update', $project) }} " method="POST" class="row">
 
         @csrf
         @method('PUT')
@@ -26,7 +26,7 @@
             <label for="input-languages" class="form-label text-white">Languages:</label>
             <input type="text" id="input-languages" class="form-control" name="languages" placeholder="languages" value="{{old('languages') ?? $project->languages}}"> 
         </div>
-        <button type="submit" class="btn btn-primary btn-outline-light my-4 col-2 mx-auto text-uppercase"><strong> add </strong></button>
+        <button type="submit" class="btn btn-primary btn-outline-light my-4 col-2 mx-auto text-uppercase"><strong> modify </strong></button>
     </form>
 
 
