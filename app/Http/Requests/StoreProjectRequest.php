@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => ['required'],
+            'image' => ['image', 'max:5000'],
         ];
     }
 }
